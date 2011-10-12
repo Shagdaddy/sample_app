@@ -1,8 +1,16 @@
-<h1>Sample App</h1>
+<h1>Home</h1>
 <p>
-  This is the home page for the
-  <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-  sample application.
+  This is the home page for the Recruiting Management System.
 </p>
+      <% if signed_in? %>
+        Click one of links in the upper right corner to navigate the site
+      <% else %>
+		<%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+		<br />
+        Or click <%= link_to "here", signin_path %> if you are already registered
+      <% end %>
 
-<%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+
+
+
+

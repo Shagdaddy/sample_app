@@ -1,5 +1,8 @@
 <li>
+
+<!-- Removing references to the gravatar since the base load won't need to manage profile pics
   <%= gravatar_for user, :size => 30 %>
+-->
   <%= link_to user.name, user %>
   <% if current_user.admin? %>
   | <%= link_to "delete", user, :method => :delete, :confirm => "You sure?",

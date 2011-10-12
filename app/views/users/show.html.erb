@@ -1,13 +1,10 @@
-<h1>
-  <%= gravatar_for @user %>
-  <%= @user.name %>
-</h1>
-
 <table class="profile" summary="Profile information">
   <tr>
     <td class="main">
       <h1>
+<!-- Removing references to the gravatar since the base load won't need to manage profile pics
         <%= gravatar_for @user %>
+-->
         <%= @user.name %>
       </h1>
     </td>
@@ -15,6 +12,7 @@
       <strong>Name</strong> <%= @user.name %><br />
       <strong>URL</strong>  <%= link_to user_path(@user), @user %><br />
 	  <strong>Email</strong> <%= @user.email %><br />
+	  <strong>Admin?</strong> <%= current_user.admin %><br />
     </td>
   </tr>
 </table>

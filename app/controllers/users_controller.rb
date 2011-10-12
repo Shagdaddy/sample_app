@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
 	  sign_in @user
-	  flash[:success] = "Welcome to the Sample App!"
+	  flash[:success] = "Welcome to the Recruiting Management System!"
       redirect_to @user
     else
       @title = "Sign up"
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def edit
 #    @user = User.find(params[:id])
-    @title = "Edit user"
+    @title = "Edit user - " + @user.name
   end
   
   def update
