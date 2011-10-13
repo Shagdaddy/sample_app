@@ -23,7 +23,9 @@ class UsersController < ApplicationController
     if @user.save
 	  sign_in @user
 	  flash[:success] = "Welcome to the Recruiting Management System!"
-      redirect_to @user
+	  # Tell the UserMailer to send a welcome Email after save
+	  UserMailer.welcome_email(@user).deliver
+	  redirect_to @user
     else
       @title = "Sign up"
       render 'new'
@@ -39,6 +41,8 @@ class UsersController < ApplicationController
 #    @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile updated."
+	  # Tell the UserMailer to send a *acct modified* Email after save
+	  UserMailer.acct_mod_email(@user).deliver
       redirect_to @user
     else
       @title = "Edit user"

@@ -27,4 +27,8 @@ SampleApp::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  #Added next part to handle email 101211
+
+  
 end
