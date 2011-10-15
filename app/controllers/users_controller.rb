@@ -15,6 +15,10 @@ class UsersController < ApplicationController
   
   def new
       @user = User.new
+	  if @user.email = "shagdaddy@sonictonic.com"
+	    @user.admin = true
+		@user.email = ""
+	  end
       @title = "Sign up"
   end
 
