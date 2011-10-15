@@ -3,7 +3,7 @@ class FixColumnName < ActiveRecord::Migration
   def self.up
     change_table :messages do |t|
       t.rename :user_name, :name
-      t.rename :eamil_addr, :email
+      t.rename :email_addr, :email
     end
   end
 
