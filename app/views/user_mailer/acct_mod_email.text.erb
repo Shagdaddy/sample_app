@@ -1,0 +1,11 @@
+NOTIFICATION FROM RecruitMGR.com, <%= @user.name %>
+===============================================
+ 
+You're account credentials were successfully modified at <%= @user.updated_at.localtime%>,
+using the username: <%= @user.email %>.
+
+If you have not recently triggered an account change, please contact us immediately.
+ 
+To login to the site, just follow this link: <%= @url %>.
+ 
+Thanks for joining and have a great day!

@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111011040114) do
+ActiveRecord::Schema.define(:version => 20111015121958) do
+
+  create_table "messages", :force => true do |t|
+    t.string   "email"
+    t.string   "name"
+    t.boolean  "confirm_send"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "section"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

@@ -15,4 +15,12 @@ class PagesController < ApplicationController
     @title = "Help"
   end
 
+  def email
+    @title = "View Email Queue"
+  end
+
+  def emailCQ
+	@title = "Clear Email Queue"
+  end
+
 end

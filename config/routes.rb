@@ -20,6 +20,8 @@ SampleApp::Application.routes.draw do
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
+  match '/email',   :to => 'pages#email'
+  match '/emailCQ',   :to => 'pages#emailCQ'
   match '*a',       :to => 'errors#routing'
   
   root :to => 'pages#home'

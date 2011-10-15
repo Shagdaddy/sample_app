@@ -1,0 +1,26 @@
+<h1>Email Queue</h1>
+<p>
+  This is the admin page for handling the Email queue in the Recruiting Management System.
+</p>
+      <% if signed_in? %>
+	  
+        <% if current_user.admin? %>
+		  <% m = Message.where("confirm_send = false") %>
+		  <% unless m.empty? %>
+		    <% m.each do |list| %>
+		      <li><%= list.id %> | <%= list.name %> | <%= list.email %> | <%= list.updated_at %></li>
+            <% end %>
+			</br> <%= link_to "Clear Queue", emailCQ_path, :class => "signup_button round" %>
+		  <% else %>
+		    There are currently no messages in the queue.
+		  <% end %>
+        <% else %>
+          You don't have permission for this section...</br></br>
+		  <%= link_to "Home", root_path %>
+        <% end %>
+	  <% else %>
+		<%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+		<br />
+        Or click <%= link_to "here", signin_path %> if you are already registered
+      <% end %>
+
