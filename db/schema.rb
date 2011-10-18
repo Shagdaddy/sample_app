@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111018124245) do
+ActiveRecord::Schema.define(:version => 20111018184506) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20111018124245) do
     t.date     "start_date"
     t.date     "end_date"
     t.string   "location"
-    t.string   "description"
+    t.text     "description"
     t.integer  "position_max"
     t.integer  "positions_filled"
     t.integer  "stage"
