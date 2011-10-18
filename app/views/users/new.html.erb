@@ -18,7 +18,18 @@
     <%= f.label :password_confirmation, "Confirmation" %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+  <div class="field">
+    <%= f.label :company_id, "Company" %><br />
+    <%= f.text_field :company_id %>
+  </div>
+  <div class="field">
+    <%= f.label :role, "Role" %><br />
+    <%= collection_select(:user, :role, Role.all, :val, :name) %>
+  </div>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
+
+
+<%#    <%= f.select (:role, %w{1 2 3}) %>

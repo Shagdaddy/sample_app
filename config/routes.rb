@@ -1,4 +1,8 @@
 SampleApp::Application.routes.draw do
+  resources :orders
+
+  resources :companies
+
   get "sessions/new"
 
   resources :users

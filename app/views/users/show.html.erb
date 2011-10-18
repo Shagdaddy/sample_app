@@ -13,6 +13,17 @@
       <strong>URL</strong>  <%= link_to user_path(@user), @user %><br />
 	  <strong>Email</strong> <%= @user.email %><br />
 	  <strong>Admin?</strong> <%= current_user.admin %><br />
+	  <strong>Role</strong>	  
+                           <%=
+                             case @user.role
+                               when 1 then "Requestor"
+                               when 2 then "Supplier"
+                               when 3 then "Requestor/Supplier"
+                             else "This user's ROLE is not set" 
+                             end
+                           %>
+<br />	  
+	  
     </td>
   </tr>
 </table>

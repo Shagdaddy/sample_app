@@ -11,7 +11,7 @@ describe PagesController do
 	it "should have the right title" do
       get 'home'
       response.should have_selector("title",
-                        :content => "Recruiting Management System | Home")
+                        :content => "VMS Lyte | Home")
     end
   end
 
@@ -24,7 +24,7 @@ describe PagesController do
       get 'contact'
       response.should have_selector("title",
                         :content =>
-                          "Recruiting Management System | Contact")
+                          "VMS Lyte | Contact")
     end
   end
   
@@ -37,7 +37,7 @@ describe PagesController do
       get 'about'
       response.should have_selector("title",
                         :content =>
-                          "Recruiting Management System | About")
+                          "VMS Lyte | About")
     end
   end
 end

@@ -1,0 +1,56 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :order_id %><br />
+    <%= f.text_field :order_id %>
+  </div>
+<%# user id went here %>
+  <div class="field">
+    <%= f.label :job_title %><br />
+    <%= f.text_field :job_title %>
+  </div>
+  <div class="field">
+    <%= f.label :job_type %><br />
+    <%= f.text_field :job_type %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br />
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %><br />
+    <%= f.date_select :end_date %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :position_max %><br />
+    <%= f.number_field :position_max %>
+  </div>
+<%# Pos Filled went here %>
+  <div class="field">
+    <%= f.label :stage %>s<br />
+    <%= f.number_field :stage %>
+  </div>
+<%# Closed Date went here %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

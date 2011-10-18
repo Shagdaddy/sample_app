@@ -1,7 +1,7 @@
 module ApplicationHelper
   # Return a title on a per-page basis.
   def title
-    base_title = "Recruiting Management System"
+    base_title = "VMS Lyte"
     if @title.nil?
       base_title
     else

@@ -20,10 +20,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-#	if @user.email = "shagdaddy@sonictonic.com"
-	  @user.admin = true
-#	  @user.email = ""
-#	end
+#	The following line sets all new users to ADMINS - change this to false once an admin module is built
+	@user.admin = true
 	if @user.save
 	  sign_in @user
 	  flash[:success] = "Welcome to the Recruiting Management System!"

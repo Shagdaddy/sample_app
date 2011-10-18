@@ -150,4 +150,20 @@ describe User do
     end
   end
   
+  describe "user associations" do
+
+    before(:each) do
+      @user = @company.users.create(@attr)
+    end
+
+    it "should have a user attribute" do
+      @user.should respond_to(:company)
+    end
+
+    it "should have the right associated user" do
+      @user.company_id.should == @company.id
+      @user.company.should == @company
+    end
+  end
+  
 end

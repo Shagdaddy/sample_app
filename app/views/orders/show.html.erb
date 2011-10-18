@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Order:</b>
+  <%= @order.order_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @order.user_id %>
+</p>
+
+<p>
+  <b>Job title:</b>
+  <%= @order.job_title %>
+</p>
+
+<p>
+  <b>Job type:</b>
+  <%= @order.job_type %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @order.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @order.end_date %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @order.location %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @order.description %>
+</p>
+
+<p>
+  <b>Position max:</b>
+  <%= @order.position_max %>
+</p>
+
+<p>
+  <b>Positions filled:</b>
+  <%= @order.positions_filled %>
+</p>
+
+<p>
+  <b>Stage:</b>
+  <%= @order.stage %>
+</p>
+
+<p>
+  <b>Closed date:</b>
+  <%= @order.closed_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

@@ -10,7 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111015121958) do
+ActiveRecord::Schema.define(:version => 20111018124245) do
+
+  create_table "companies", :force => true do |t|
+    t.string   "name"
+    t.string   "abbr"
+    t.integer  "jobcount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "companies", ["abbr"], :name => "index_companies_on_abbr", :unique => true
+  add_index "companies", ["name"], :name => "index_companies_on_name", :unique => true
 
   create_table "messages", :force => true do |t|
     t.string   "email"
@@ -21,6 +32,30 @@ ActiveRecord::Schema.define(:version => 20111015121958) do
     t.string   "section"
   end
 
+  create_table "orders", :force => true do |t|
+    t.string   "order_id"
+    t.integer  "user_id"
+    t.string   "job_title"
+    t.string   "job_type"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "location"
+    t.string   "description"
+    t.integer  "position_max"
+    t.integer  "positions_filled"
+    t.integer  "stage"
+    t.date     "closed_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.integer  "val"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -29,6 +64,8 @@ ActiveRecord::Schema.define(:version => 20111015121958) do
     t.string   "encrypted_password"
     t.string   "salt"
     t.boolean  "admin",              :default => false
+    t.integer  "company_id"
+    t.integer  "role"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
