@@ -90,6 +90,44 @@ nav ul li a:hover {
   text-decoration: underline;
 }
 
+/* User Name */
+
+nam {
+  float: right;
+}
+
+nam {
+#  background-color: white;
+  padding: 0 0.7em;
+  white-space: nowrap;
+}
+
+nam ul {
+  margin: 0;
+  padding: 0;
+}
+
+nam ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.2em 0;
+}
+
+nam ul li a {
+  padding: 0 5px;
+  font-weight: bold;
+}
+
+nam ul li a:visited {
+  color: #09c;
+}
+
+nam ul li a:hover {
+  color: #fb4;
+  text-decoration: underline;
+}
+
+
 /* Sign up button */
 
 a.signup_button {

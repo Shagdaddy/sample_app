@@ -10,7 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20111018184506) do
+=======
+ActiveRecord::Schema.define(:version => 20111018185852) do
+
+  create_table "candidates", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.text     "resume"
+    t.string   "reference_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+>>>>>>> candidates
 
   create_table "companies", :force => true do |t|
     t.string   "name"

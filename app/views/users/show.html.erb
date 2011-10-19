@@ -5,8 +5,11 @@
 <!-- Removing references to the gravatar since the base load won't need to manage profile pics
         <%= gravatar_for @user %>
 -->
-        <%= @user.name %>
+        <%= @user.name %></br></br>
       </h1>
+	  
+	  <%= display_role_links(@user.role) %>
+
     </td>
     <td class="sidebar round">
       <strong>Name</strong> <%= @user.name %><br />

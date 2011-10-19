@@ -18,4 +18,9 @@
       <% end %>
     </ul>
   </nav>
+  <% if signed_in? %>
+    <nam class="round">
+      <ul><li><%= current_user.name %> (<%= current_user.id %>)</li>
+    </nam>
+  <% end %>
 </header>
