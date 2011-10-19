@@ -2,7 +2,13 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    test_for_admin = User.find(self.current_user.id).admin
+	if test_for_admin
+	  @orders = Order.all
+	else
+	  @orders = Order.where(:user_id => self.current_user.id)
+	end
+#   OLD STATEMENT - @orders = Order.all
 
     respond_to do |format|
       format.html # index.html.erb

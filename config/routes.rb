@@ -1,4 +1,6 @@
 SampleApp::Application.routes.draw do
+  resources :candidates
+
   resources :orders
 
   resources :companies
