@@ -55,7 +55,6 @@ module SessionsHelper
 #  else
 #   html << "<p>Visit some other #{link_to("website", "http://google.co.uk")}</p>"
 #  end
-  
 
   private
 

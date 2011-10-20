@@ -9,7 +9,7 @@ SampleApp::Application.routes.draw do
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
-
+  resources :submissions, :only => [:new, :create, :edit, :update]
   
   match '/signup',  :to => 'users#new'
 

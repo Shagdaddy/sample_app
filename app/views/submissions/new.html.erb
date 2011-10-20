@@ -1,0 +1,9 @@
+<h1>New submission of a candidate</h1>
+
+Current user - <%= self.current_user.id %> - </br>
+Company abbr - <%= Company.find(self.current_user.company_id).abbr %> - </br>
+Current Order ID -  - </br>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', orders_path %>

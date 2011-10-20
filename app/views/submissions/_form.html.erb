@@ -1,0 +1,23 @@
+<%#  <%= render 'shared/error_messages', :object => f.object %>
+<%= form_for(@submission) do |f| %>
+  <% if @submission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
+
+      <ul>
+      <% @submission.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :candidate_id %><br />
+    <%= collection_select(:submission, :candidate_id, Candidate.all, :id, :last_name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add Candidate to Order #" %>
+  </div>
+<% end %>
