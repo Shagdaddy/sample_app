@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   belongs_to :company
   has_many :orders
   has_many :candidates
+  has_many :submissions, :through => :orders
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   

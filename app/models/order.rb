@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   belongs_to :user
+  has_many :submissions
 
   validates :job_title,      :presence   => true,
 						     :length     => { :maximum => 35}

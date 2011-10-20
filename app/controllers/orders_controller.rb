@@ -20,10 +20,13 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @order = Order.find(params[:id])
-
+	# the next two lines are specific for rendering submissions tied to this REQUESTOR.  To tie to a SUPPLIER, need to tie CANDIDATE_ID between Submissions & Candidates tables
+	order_owner = @order.order_id
+	@submissions = Submission.where(:order_id => order_owner)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @order }
+      format.json { render :json => @submissions }
     end
   end
 

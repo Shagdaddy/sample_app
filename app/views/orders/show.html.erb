@@ -60,6 +60,36 @@
   <%= @order.closed_date %>
 </p>
 
+-------
+--> Submissions here ---> </br>
+
+<% if @submissions.empty? %>
+
+<i>There are no submissions as of yet for this order</i> </br></br>
+
+<% else %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Order ID</th>
+    <th>Candidate ID</th>
+	<th>Candidate Name</th>
+	<th>Stage</th>
+  </tr>
+
+<% @submissions.each do |submission| %>
+  <tr>
+    <td><%= submission.id %></td>
+    <td><%= submission.order_id %></td>
+    <td><%= submission.candidate_id %></td>
+	<td><%= Candidate.find(submission.candidate_id).first_name %> <%= Candidate.find(submission.candidate_id).last_name %></td>
+    <td><%= submission.stage %></td>
+  </tr>
+<% end %>
+</table>
+<% end %>
+-------
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
