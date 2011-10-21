@@ -13,4 +13,4 @@ module ApplicationHelper
     image_tag("vmslytelogo.png", :alt => "VMS Lyte", :class => "round")
   end
 
-end
+end  

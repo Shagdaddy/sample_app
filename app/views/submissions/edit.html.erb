@@ -17,7 +17,8 @@
 
   <div class="field">
     <%= f.label :delta %><br />
-    <%= collection_select(:submission, :delta, Role.all, :val, :name) %>
+<%##    <%= collection_select(:submission, :delta, Role.all, :val, :name) %>
+    <%= select(:submission, :delta, { "Proceed to next stage" => "1", "No change" => "2", "No longer being considererd" => "3"}) %>
   </div>
 <%#  <div class="field">
 <%#    <%= f.label :stage %>

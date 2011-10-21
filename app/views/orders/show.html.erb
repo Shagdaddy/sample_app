@@ -1,69 +1,14 @@
-<p id="notice"><%= notice %></p>
+<%# <p id="notice"><%= notice %></p> 
 
-<p>
-  <b>Order:</b>
-  <%= @order.order_id %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @order.user_id %>
-</p>
-
-<p>
-  <b>Job title:</b>
-  <%= @order.job_title %>
-</p>
-
-<p>
-  <b>Job type:</b>
-  <%= @order.job_type %>
-</p>
-
-<p>
-  <b>Start date:</b>
-  <%= @order.start_date %>
-</p>
-
-<p>
-  <b>End date:</b>
-  <%= @order.end_date %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @order.location %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @order.description %>
-</p>
-
-<p>
-  <b>Position max:</b>
-  <%= @order.position_max %>
-</p>
-
-<p>
-  <b>Positions filled:</b>
-  <%= @order.positions_filled %>
-</p>
-
-<p>
-  <b>Stage:</b>
-  <%= @order.stage %>
-</p>
-
-<p>
-  <b>Closed date:</b>
-  <%= @order.closed_date %>
-</p>
-
--------
---> Submissions here ---> </br></br>
-
-Click <%= link_to "here", new_submission_path(:oid => @order.id, :os => @order.stage) %> to submit a new candidate</br></br>
+<mntx class="round">
+<table class="mntx-profile">
+  <tr>
+    <td class="mntx-main">
+	
+  <%# Need to test to see if the current user is a supplier (either 2 or 3) in order to allow the ability to add candidates to this order %>
+  <% if current_user.role != 1 %>
+      Click <%= link_to "here", new_submission_path(:oid => @order.id, :os => @order.stage) %> to submit a new candidate</br></br>
+  <% end %>
 
 <% if @submissions.empty? %>
 
@@ -73,29 +18,87 @@ Click <%= link_to "here", new_submission_path(:oid => @order.id, :os => @order.s
 
 <table>
   <tr>
-    <th>ID</th>
-    <th>Order ID</th>
-    <th>Candidate ID</th>
-	<th>Candidate Name</th>
+    <th>Resume</th>
+	<th>Candidate</th>
+	<th><center>Stage</center></th>
 	<th>Stage</th>
   </tr>
 
 <% @submissions.each do |submission| %>
   <tr>
-    <td><%= submission.id %></td>
-    <td><%= submission.order_id %></td>
-    <td><%= submission.candidate_id %></td>
+    <td><center><img src="/assets/pic-o-doc.png" alt="Resume" /></center></td>
 	<td><%= Candidate.find(submission.candidate_id).first_name %> <%= Candidate.find(submission.candidate_id).last_name %></td>
-<%#    <td><%= submission.stage %></td>
-    <td><%= link_to submission.stage, edit_submission_path(submission) %></td>
-<%#    <%= link_to submission.stage, submission %>
+	<td><left><img src="/assets/<%= 158.to_s %>.png" alt="158" /></left></td>  
+	  <%## only include a link to modify stage value if stage is between 201 and 399 %>
+	  <% if submission.stage < 400 && submission.stage >200 %>
+        <td><%= link_to submission.stage, edit_submission_path(submission) %></td>  
+	  <% else %>
+	    <td><%= submission.stage %></td>  
+      <% end %>
   </tr>
 <% end %>
 </table>
 <% end %>
--------
 
+</td>
 
+<td class="mntx-sidebar round">
+
+  <b>Order:</b>
+  <%= @order.order_id %>
+
+</br>
+
+  <b>Owner:</b>
+<%##  <%= @order.user_id %>
+  <%= User.find(@order.user_id).name %>
+  
+</br>
+
+  <%# Need to test to see if the current user is a supplier (either 2 or 3) in order to allow the ability to add candidates to this order %>
+  <% if current_user.role != 1 %>
+      <b>Company:</b> <%= Company.find(User.find(@order.user_id).company_id).name %></br>
+  <% end %>
+
+  <b>Job title:</b>
+  <%= @order.job_title %>
+
+</br>
+
+  <b>Job type:</b>
+  <%= @order.job_type %>
+
+</br>
+
+  <b>Start/end date:</b>
+  <%= @order.start_date %> /
+  <%= @order.end_date %>
+
+</br>
+
+  <b>Location:</b>
+  <%= @order.location %>
+
+</br>
+
+  <b>Description: </b>(** need to link to popup window)
+<%#  <%= @order.description %>
+
+</br>
+
+  <b>Positions (filled/max):</b>
+  <%= @order.position_max %> /
+  <%= @order.positions_filled %>
+
+</br>
+
+  <b>Stages:</b>
+  <%= @order.stage %>
+
+  </td>
+  </tr>
+  </table>
+</mntx>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

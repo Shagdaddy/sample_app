@@ -15,9 +15,10 @@
 
   <div class="field">
     <%= f.label :candidate_id %><br />
-    <%= collection_select(:submission, :candidate_id, Candidate.all, :id, :last_name) %>
+<%#    <%= collection_select(:submission, :candidate_id, Candidate.all, :id, :full_name) %>
+    <%= collection_select(:submission, :candidate_id, Candidate.find(:all, :conditions => { :user_id => self.current_user.id }), :id, :full_name) %>
   </div>
   <div class="actions">
-    <%= f.submit "Add Candidate to Order #" %>
+    <%= f.submit "Add Candidate to Order #" + Order.find(@submission.order_id).order_id %>
   </div>
 <% end %>

@@ -20,9 +20,26 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @order = Order.find(params[:id])
-	# the next two lines are specific for rendering submissions tied to this REQUESTOR.  To tie to a SUPPLIER, need to tie CANDIDATE_ID between Submissions & Candidates tables
-	order_owner = @order.order_id
-	@submissions = Submission.where(:order_id => order_owner)
+    # Need to test ROLE to see what records are displayed in the SUBMISSIONS sub-table
+    order_owner = @order.id
+	case self.current_user.role
+	when 1
+  	  ## the next two lines are specific for rendering submissions tied to this REQUESTOR.  ORDER.ID is joined between Submissions & Candidates tables	  
+      @submissions = Submission.find(:all, :conditions => { :order_id => order_owner }, :order => 'stage DESC' )
+##	  @submissions = Submission.where(:order_id => order_owner)
+    when 2
+  	  ## the next two lines are specific for rendering submissions tied to this Supplier.  CANDIDATE_ID & ORDER.ID are joined between Submissions & Candidates tables
+	  candidate_owner = self.current_user.id
+      @submissions = Submission.find(:all, :conditions => { :user_id => candidate_owner, :order_id => order_owner }, :order => 'stage DESC' )	  
+    when 3
+  	  ## the next two lines are specific for rendering submissions tied to this Supplier.  CANDIDATE_ID & ORDER.ID are joined between Submissions & Candidates tables
+	  candidate_owner = self.current_user.id
+      @submissions = Submission.find(:all, :conditions => { :user_id => candidate_owner, :order_id => order_owner }, :order => 'stage DESC' )	  
+    else
+  	  ## the next two lines are specific for rendering submissions tied to this Supplier.  CANDIDATE_ID & ORDER.ID are joined between Submissions & Candidates tables
+	  candidate_owner = self.current_user.id
+      @submissions = Submission.find(:all, :conditions => { :user_id => candidate_owner, :order_id => order_owner }, :order => 'stage DESC' )	  
+	end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @order }

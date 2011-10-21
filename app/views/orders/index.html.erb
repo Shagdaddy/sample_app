@@ -1,20 +1,15 @@
 <h1>Listing orders</h1>
 
+<mntx class="round">
+
 <table>
   <tr>
-    <th>SysID</th>
     <th>Order</th>
-    <th>User</th>
     <th>Job title</th>
     <th>Job type</th>
     <th>Start date</th>
-<%#    <th>End date</th>   %>
     <th>Location</th>
-<%#    <th>Description</th>    %>
-    <th>Position max</th>
-    <th>Positions filled</th>
-    <th>Stage</th>
-<%#    <th>Closed date</th>   %>
+    <th>Positions filled/max</th>
     <th></th>
     <th></th>
     <th></th>
@@ -22,19 +17,16 @@
 
 <% @orders.each do |order| %>
   <tr>
-    <td><%= order.id %></td>
     <td><%= order.order_id %></td>
-    <td><%= order.user_id %></td>
     <td><%= order.job_title %></td>
     <td><%= order.job_type %></td>
     <td><%= order.start_date %></td>
-<%#    <td><%= order.end_date %></td>
     <td><%= order.location %></td>
-<%#    <td><%= order.description %></td>
-    <td><%= order.position_max %></td>
-    <td><%= order.positions_filled %></td>
-    <td><%= order.stage %></td>
-<%#    <td><%= order.closed_date %></td>
+    <% if order.positions_filled.nil? %>
+      <td>0 / <%= order.position_max %></td>
+    <% else %>
+      <td><%= order.positions_filled %> / <%= order.position_max %></td>
+	<% end %>
     <td><%= link_to 'Show', order %></td>
     <td><%= link_to 'Edit', edit_order_path(order) %></td>
     <td><%= link_to 'Destroy', order, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -43,6 +35,7 @@
 <% end %>
 </table>
 
+</mntx>
 <br />
 
 <%= link_to 'New Order', new_order_path %>

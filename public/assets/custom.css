@@ -6,11 +6,12 @@
 
 /* custom.css */
 .container {
-  width: 710px;
+  width: 810px;
 }
 
+/* body bkg was #fb4 */
 body {
-  background: #fb4;
+  background: #cec;
 }
 
 header {
@@ -37,20 +38,47 @@ div.field, div.actions {
   margin-bottom: 10px;
 }
 
+/* Order show page */
+
+mntx {
+  font-size: small;
+}
+
+table.mntx-profile {
+  width: 100%;
+  margin-bottom: 0;
+  background: #fff;
+}
+
+td.mntx-main {
+  width: 70%;
+  padding: 1em;
+  vertical-align: top;
+}
+
+td.mntx-sidebar {
+  width: 30%;
+  padding: 1em;
+  vertical-align: top;
+  line-height:150%;
+  background: #def;
+}
+
+
 /* Links */
 
 a {
-  color: #fb4;
+  color: #0c0;
   text-decoration: none;
 }
 
 a:hover {
-  color: #fb4;
+  color: #069;
   text-decoration: underline;
 }
 
 a:visited {
-  color: #069;
+  color: #0c0;
 }
 
 /* Navigation */
@@ -206,15 +234,16 @@ footer nav {
 table.profile {
   width: 100%;
   margin-bottom: 0;
+  background: #def;
 }
 
 td.main {
-  width: 70%;
+  width: 60%;
   padding: 1em;
 }
 
 td.sidebar {
-  width: 30%;
+  width: 40%;
   padding: 1em;
   vertical-align: top;
   background: #ffc;
