@@ -8,7 +8,6 @@ class CandidatesController < ApplicationController
 	else
 	  @candidates = Candidate.where(:user_id => self.current_user.id)
 	end
-#   OLD STATEMENT - @candidates = Candidate.all
 
     respond_to do |format|
       format.html # index.html.erb

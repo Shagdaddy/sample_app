@@ -4,13 +4,14 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Welcome to RecruitMGR.com, <%= @user.name %></h1>
+    <img src="/assets/vmslytelogo.png" alt="VMSLyte" /></br>
+    <h1>Welcome to VMSLyte.com, <%= @user.name %></h1>
     <p>
       You have successfully signed up to use our system as of <%= @user.updated_at.localtime%>,
       your username is: <%= @user.email %>.<br/>
     </p>
     <p>
-      To login to the site, just follow this link: <%= @url %>.
+      To login to the site, just follow this link: http://empty-stream-1241.heroku.com/.
     </p>
     <p>Thanks for joining and have a great day!</p>
   </body>

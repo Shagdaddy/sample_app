@@ -8,7 +8,6 @@ class OrdersController < ApplicationController
 	else
 	  @orders = Order.where(:user_id => self.current_user.id)
 	end
-#   OLD STATEMENT - @orders = Order.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,7 +25,6 @@ class OrdersController < ApplicationController
 	when 1
   	  ## the next two lines are specific for rendering submissions tied to this REQUESTOR.  ORDER.ID is joined between Submissions & Candidates tables	  
       @submissions = Submission.find(:all, :conditions => { :order_id => order_owner }, :order => 'stage DESC' )
-##	  @submissions = Submission.where(:order_id => order_owner)
     when 2
   	  ## the next two lines are specific for rendering submissions tied to this Supplier.  CANDIDATE_ID & ORDER.ID are joined between Submissions & Candidates tables
 	  candidate_owner = self.current_user.id

@@ -3,16 +3,11 @@ class SubmissionsController < ApplicationController
   def index
     test_for_admin = User.find(self.current_user.id).admin
 	if test_for_admin
-#
+# Statements will come later
 	else
-#
+# Statements will come later
 	end
-#   OLD STATEMENT - @submissions = Submission.all
 
-#    respond_to do |format|
-#      format.html # index.html.erb
-#      format.json { render :json => @orders }
-#    end
   end
 
   def show

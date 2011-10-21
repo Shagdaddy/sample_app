@@ -49,12 +49,6 @@ module SessionsHelper
         "<p>Review #{link_to "Orders", orders_path}</p><p>Review #{link_to "Candidates", candidates_path}</p>".html_safe
     end
   end
-#  html = ""
-#  if some_condition
-#    html << "<p>Visit my #{link_to("website", "http://paulsturgess.co.uk")}</p>"
-#  else
-#   html << "<p>Visit some other #{link_to("website", "http://google.co.uk")}</p>"
-#  end
 
   private
 
