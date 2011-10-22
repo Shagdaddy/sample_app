@@ -7,7 +7,9 @@
 	
   <%# Need to test to see if the current user is a supplier (either 2 or 3) in order to allow the ability to add candidates to this order %>
   <% if current_user.role != 1 %>
-      Click <%= link_to "here", new_submission_path(:oid => @order.id, :os => @order.stage) %> to submit a new candidate</br></br>
+      Click <%= link_to "here", new_submission_path(:oid => @order.id, :os => @order.stage) %> to submit a new candidate</br>
+  <% else %>
+      </br>
   <% end %>
 
 <% if @submissions.empty? %>
@@ -20,7 +22,7 @@
   <tr>
     <th>Resume</th>
 	<th>Candidate</th>
-	<th><center>Stage</center></th>
+	<th><center><ost class="round"><ul><li>CV</li><li>Int1</li><li>Int2</li><li>Int3</li><li>Ref</li><li>Offr</li><li>Scrn</li><li>Accpt</li></ul></ost></center></th>
 	<th>Stage</th>
   </tr>
 
@@ -86,7 +88,7 @@
 
 </br>
 
-  <b>Positions (filled/max):</b>
+  <b>Positions <small>(max/filled)</small>:</b>
   <%= @order.position_max %> /
   <%= @order.positions_filled %>
 

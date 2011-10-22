@@ -51,12 +51,16 @@ table.mntx-profile {
 }
 
 td.mntx-main {
+  float: left;
+  position: relative;
+  bottom: 34px;
   width: 70%;
   padding: 1em;
   vertical-align: top;
 }
 
 td.mntx-sidebar {
+  position: relative;
   width: 30%;
   padding: 1em;
   vertical-align: top;
@@ -64,6 +68,43 @@ td.mntx-sidebar {
   background: #def;
 }
 
+tr.stage-main {
+  text-align: center;
+  font-size: small;
+  font-weight: bold;
+}
+
+/* Order Stage Title */
+
+ost {
+/*  float: left; */
+}
+
+ost {
+  background-color: white;
+  padding: 0 0.7em;
+  white-space: nowrap;
+}
+
+ost ul {
+  margin: 0;
+  padding: 0;
+  width: 344px;
+  color: blue;
+  position: relative;
+  bottom: 10px;
+
+}
+
+ost ul li {
+  float: left;
+  list-style-type: none;
+  display: inline-block;
+  text-align: left;
+  padding: 0.2em 0;
+  width: fixed;
+  width: 43px;
+}
 
 /* Links */
 
@@ -122,6 +163,12 @@ nav ul li a:hover {
 
 nam {
   float: right;
+  position: relative;
+  left: 336px;
+  bottom: -20px;
+  text-align: right;
+  font-size: xx-large;
+  font-weight: bold;
 }
 
 nam {
@@ -139,20 +186,6 @@ nam ul li {
   list-style-type: none;
   display: inline-block;
   padding: 0.2em 0;
-}
-
-nam ul li a {
-  padding: 0 5px;
-  font-weight: bold;
-}
-
-nam ul li a:visited {
-  color: #09c;
-}
-
-nam ul li a:hover {
-  color: #fb4;
-  text-decoration: underline;
 }
 
 
