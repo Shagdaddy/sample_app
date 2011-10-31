@@ -11,6 +11,6 @@ class Order < ActiveRecord::Base
 							 :numericality => { :greater_than => 1 }
   validates :stage,          :presence => true,
 # assumed				     :numericality => true,
-							 :numericality => { :greater_than => 3, :less_than_or_equal_to => 9 }
+							 :numericality => { :greater_than => 3, :less_than_or_equal_to => 8 }
 
 end

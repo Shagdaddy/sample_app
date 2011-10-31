@@ -114,7 +114,7 @@ class OrdersController < ApplicationController
       format.json { head :ok }
     end
   end
-  
+    
   private
 
     def increase_jobcount

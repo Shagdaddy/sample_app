@@ -18,11 +18,46 @@
 
 <% else %>
 
+<%# Need to figure out what TITLES are to be shown for the STAGES - dependent on number of stages  %>
+<%
+	stage_count = @order.stage
+%>
+
+<%# Initialize stage title array %>
+<%
+	title=Array.new(stage_count+1, "")
+	title[1] = "CV"
+	title[2] = "Int1"
+	pointer = 3
+	if stage_count > 4 then
+		title[3] = "Int2"
+		pointer = pointer + 1
+	end
+	if stage_count > 5 then
+		title[4] = "Int3"
+		pointer = pointer + 1
+	end
+	if stage_count > 6 then
+		title[5] = "Ref"
+		pointer = pointer + 1
+	end
+	if stage_count > 7 then
+		title[6] = "Scrn"
+		pointer = pointer + 1
+	end
+	title[pointer] = "Offr"
+	title[pointer+1] = "Accpt"
+%>
+
 <table>
   <tr>
     <th>Resume</th>
 	<th>Candidate</th>
-	<th><center><ost class="round"><ul><li>CV</li><li>Int1</li><li>Int2</li><li>Int3</li><li>Ref</li><li>Offr</li><li>Scrn</li><li>Accpt</li></ul></ost></center></th>
+	<th><center><ost class="round"><ul>
+	<% for tl in 1..stage_count %>	
+		<li><%= title[tl] %></li>
+	<% end %>	
+	</ul></ost></center></th>
 	<th>Stage</th>
   </tr>
 
@@ -30,7 +65,56 @@
   <tr>
     <td><center><img src="/assets/pic-o-doc.png" alt="Resume" /></center></td>
 	<td><%= Candidate.find(submission.candidate_id).first_name %> <%= Candidate.find(submission.candidate_id).last_name %></td>
-	<td><left><img src="/assets/<%= 158.to_s %>.png" alt="158" /></left></td>  
+ 
+
+<%# 1st pass - initialize all to grey (silver) %>
+<%
+	v1 = (submission.stage/100).to_i
+	v2 = (submission.stage-(v1*100))/10.to_i
+	v3 = (submission.stage-(v1*100)-(v2*10))
+	diamond=Array.new(v3+1, "sd")
+	line=Array.new(v3+1, "sl")
+%>		
+		
+<%# 2nd pass - change trailing silver to green %>
+<%
+	if v2 != 0 then	
+		for x in 1..v2	
+			diamond[x] = "gd"
+			line[x] = "gl"
+		end
+	end
+%>	
+
+<%# 3rd pass - check for the final stage %>
+<%
+	if v1 == 1 then
+		diamond[v2] = "rd"
+		line[v2] = "sl"
+	end
+	if v1 == 4 then
+		for x in 1..v3
+			diamond[x] = "gd"
+			line[x] = "gl"
+		end
+	end
+%>		
+<%# Clean up - the very last line[] item needs to be 'end' which is a 2 pixel blank image %>
+<%
+	line[v3] = 'end'	
+%>		
+
+<td valign="middle"><left> 
+
+<%# Display collection of array items to form the complete stage %>
+<%  stagestr = "" %>
+<%	for x in 1..v3	%>
+<%		stagestr = stagestr + '<img src="/images/' + diamond[x] +'.png"/><img src="/images/' + line[x] + '.png"/>' %>
+<%	end	%>
+<%= stagestr.html_safe %>
+
+</left></td>
+
 	  <%## only include a link to modify stage value if stage is between 201 and 399 %>
 	  <% if submission.stage < 400 && submission.stage >200 %>
         <td><%= link_to submission.stage, edit_submission_path(submission) %></td>  

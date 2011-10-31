@@ -72,14 +72,14 @@ class SubmissionsController < ApplicationController
 			# With a trigger here to graduate to HIRED (.delta = 1), 
 			#   the candidate's stage only increases to stage 356 (active, 5th of 6th stages).
 			# But if the current stage = 356, then the algorithm below will set the 
-			#   new stage value to 400 (which means HIRED)
+			#   new stage value to 400 + # of stages (which means HIRED)
 		    stage_inc = 10
 		    if (@submission.stage/100).to_i == 2
 			  stage_inc = 110
 			end
 			fl = @submission.stage - (@submission.stage/100)*100
 			if (fl - (fl/10).to_i*10 - 1).to_i == (fl/10).to_i
-			  stage_inc = 400 - @submission.stage
+			  stage_inc = 400 - @submission.stage + (fl/10).to_i
 			end
 		    @submission.stage = @submission.stage + stage_inc
 		  when 2
