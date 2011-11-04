@@ -5,6 +5,7 @@
     <%= csrf_meta_tag %>
     <%= render 'layouts/stylesheets' %>
     <%= javascript_include_tag :defaults %>
+<!--  ##The above line should be --- javascript_include_tag "application" , but that errors out in HEROKU -->
   </head>
   <body>
     <div class="container">
